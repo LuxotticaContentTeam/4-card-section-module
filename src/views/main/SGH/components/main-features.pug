@@ -1,0 +1,21 @@
+//- Main features — four cards, horizontal scroll-snap carousel on mobile.
+//-
+//- NOTE: variant views are rendered by tasks/views.task.js through
+//- `pug.renderFile(..., { include })`, i.e. WITHOUT the pug locals available to
+//- src/views/index.pug. So no `bannerName` / `crossoriginAttr` here: the
+//- skeleton is static and every text node and image is filled at runtime by
+//- src/js/contents.js from src/json/variants/SGH/json.js.
+
+- var CARDS = [0, 1, 2, 3]
+
+section.ct_main-features#ct_main-features
+  h2.ct_main-features__title
+
+  .ct_main-features__track(role="list")
+    each index in CARDS
+      article.ct_main-features__card(role="listitem" data-card-index=index)
+        img.ct_main-features__card-image(alt="" loading="lazy" decoding="async")
+        .ct_main-features__card-text
+          h3.ct_main-features__card-title
+          p.ct_main-features__card-description
+          span.ct_main-features__card-disclaimer(hidden)

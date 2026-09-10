@@ -1,0 +1,145 @@
+// ---------------------------------------------------------------------------
+// Main features — four cards.
+//
+// Desktop (>= $desk-min): the four cards sit side by side, equal widths.
+// Tablet and below (<= $tab-max): the row turns into a horizontal carousel
+// driven purely by CSS scroll-snap — no JS, no carousel library.
+//
+// Ported from RB-AIGlasses-LP > src/style/components/section/_features.scss.
+// ---------------------------------------------------------------------------
+
+.ct_main-features {
+  padding: $spacing-section $spacing-md;
+
+  &__title {
+    margin: 0;
+    font-family: $font-display;
+    font-size: $font-size-section-title; // TODO Figma
+    font-weight: $font-weight-bold;
+    color: $white; // TODO Figma
+  }
+
+  &__track {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: $spacing-xs;
+    margin-top: $spacing-xl;
+    // Keeps a vertical scrollbar from appearing while the horizontal one is
+    // active on touch devices.
+    overflow-y: hidden;
+
+    @media (max-width: $tab-max) {
+      justify-content: flex-start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      // Snap position lines up with the section padding.
+      scroll-padding-left: $spacing-md;
+      // Full bleed: cancel the section padding so the first card can snap to
+      // the screen edge, then reinstate it as inner padding of the scroller.
+      margin-inline: -$spacing-md;
+      padding-inline: $spacing-md;
+      -webkit-overflow-scrolling: touch;
+
+      // The scrollbar is hidden; the affordance is the peeking next card.
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__card {
+    position: relative;
+    flex: 1 1 0; // desktop: four equal columns
+    aspect-ratio: #{$card-width} / #{$card-height};
+    border: 1px solid rgba($white, 0.4); // TODO Figma
+    border-radius: $border-radius * 2; // TODO Figma
+    overflow: hidden;
+
+    @media (max-width: $tab-max) {
+      flex: 0 0 min(#{$card-width-mobile}, #{$card-max-width});
+      scroll-snap-align: start;
+    }
+
+    // Bottom gradient: keeps the white copy readable over any image.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 39%, rgba(0, 0, 0, 0.5) 88%); // TODO Figma
+      pointer-events: none;
+    }
+
+    // Entry animation start state. `.is-visible` is added by contents.js the
+    // first time the section enters the viewport.
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  &__card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // Same ratio as the card, so the box is reserved before the lazy image
+    // lands and nothing shifts.
+    aspect-ratio: #{$card-width} / #{$card-height};
+    object-fit: cover;
+  }
+
+  &__card-text {
+    position: absolute;
+    z-index: 1; // above the ::after gradient
+    left: $spacing-sm;
+    right: $spacing-sm;
+    bottom: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    color: $white;
+    font-family: $font-primary;
+  }
+
+  &__card-title {
+    margin: 0 0 $spacing-xs; // + the 16px gap = 24px down to the description
+    font-size: $font-size-card-title; // TODO Figma
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    letter-spacing: -1.28px; // TODO Figma
+  }
+
+  &__card-description {
+    margin: 0;
+    font-size: $font-size-card-body; // TODO Figma
+    font-weight: $font-weight-regular;
+    letter-spacing: -0.56px; // TODO Figma
+    line-height: 1.6;
+  }
+
+  &__card-disclaimer {
+    font-size: $font-size-card-disclaimer; // TODO Figma
+    font-weight: $font-weight-regular;
+    letter-spacing: -0.4px; // TODO Figma
+    line-height: 1.6;
+  }
+
+  // Cards rise into place one after the other, once.
+  // The child selector is written out in full: `&__card` here would re-expand
+  // the whole parent chain (banner id included) and never match.
+  &.is-visible .ct_main-features__card {
+    opacity: 1;
+    transform: translateY(0);
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.15}s;
+      }
+    }
+  }
+}

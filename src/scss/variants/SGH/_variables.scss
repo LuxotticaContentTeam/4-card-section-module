@@ -1,0 +1,56 @@
+// ---------------------------------------------------------------------------
+// SGH design tokens
+//
+// TODO Figma: every value in this file must be confirmed against Figma node
+// 410-8852 (file "SGH - RB META APEROL"). The current values are carried over
+// from the sibling module RB-AIGlasses-LP > 02_features and are a structural
+// starting point, NOT the Aperol design.
+// ---------------------------------------------------------------------------
+
+// Breakpoints (shared with src/scss/utils/_variables.scss)
+$mob-small: 375px;
+$mob-max: 767px;
+$tab-min: 768px;
+$tab-max: 1024px;
+$desk-min: 1025px;
+
+// Colours
+$white: #fff;
+$black: #000;
+
+// Spacing scale
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 64px;
+$spacing-section: 60px;
+
+// Radius
+$border-radius: 8px;
+
+// Typography
+$font-primary: "Helvetica Neue", sans-serif;
+$font-display: "Acta Headline", serif;
+
+$font-size-section-title: 40px;
+$font-size-card-title: 32px;
+$font-size-card-body: 14px;
+$font-size-card-disclaimer: 10px;
+
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+// Card geometry. Kept as two numbers so the ratio stays readable in the
+// compiled CSS (a bare `320 / 600` would be evaluated to 0.5333).
+$card-width: 320;
+$card-height: 600;
+// Carousel card width: a share of the viewport, below 100% so the next card
+// peeks in and the horizontal scroll is discoverable...
+$card-width-mobile: 82%;
+// ...capped at the design width, otherwise on a 1024px tablet 82% would give
+// an 800px-wide, 1500px-tall card.
+// TODO Figma: node 410-8852 defines desktop and mobile only. Confirm the
+// intended tablet behaviour (capped carousel, as implemented, or a 2-column
+// grid).
+$card-max-width: 320px;
