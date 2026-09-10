@@ -73,12 +73,33 @@ Cards fade and rise into view once, staggered, when the section first enters the
 viewport (`IntersectionObserver` in `contents.js` toggles `.is-visible`; the CSS
 does the rest, and respects `prefers-reduced-motion`).
 
+## Design source
+
+| | Figma node | Card |
+| --- | --- | --- |
+| Desktop (1440) | `410:8852` | 334x600, four equal columns |
+| Mobile (375) | `410:10431` | 320x600, carousel |
+
+The card copy is anchored 450px (desktop) / 430px (mobile) from the card top,
+not to its bottom edge — that is what keeps the four titles on one line
+regardless of how long each description runs.
+
+Card images live in `src/static/images/` at 668x1200 (2x the desktop card),
+cropped from the Figma source assets.
+
 ## Open items
 
-Search the repo for `TODO Figma` and `TODO_AKAMAI`:
-
-- design tokens in `src/scss/variants/SGH/_variables.scss` and the flagged
-  values in `_main-features.scss` still need to be confirmed against node
-  `410-8852`;
-- copy and image file names in `src/json/variants/SGH/json.js` are empty;
-- production asset paths in `package.json` and `src/views/main/SGH/live/live.html`.
+- **Akamai paths** — `productionImage` / `productionConf` in `package.json` and
+  the `[PATH]` / `[VERSION]` placeholders in
+  `src/views/main/SGH/live/live.html`. Search for `TODO_AKAMAI`.
+- **Localisation** — only `en-us` copy is in `src/json/variants/SGH/json.js`.
+  Note the "Hey Meta, ..." prompt bubble is baked into each photo, so it will
+  not translate with the copy; localised markets need localised artwork.
+- **Tablet (768-1024px)** — the design covers 1440 and 375 only. This range
+  currently gets the mobile carousel with the same 320px cards.
+- **Card border** — in Figma the second card has a solid white border while the
+  other three are `rgba(255,255,255,0.4)`. Treated here as a design slip: all
+  four use the 40% border.
+- **Copy** — Figma reads "Capture every moment hands-free ." (stray space) and
+  the mobile frame capitalises "Open-Ear audio" where desktop has "Open-ear
+  audio". Both normalised here; revert if intentional.

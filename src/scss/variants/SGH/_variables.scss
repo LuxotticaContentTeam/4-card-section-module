@@ -1,10 +1,7 @@
 // ---------------------------------------------------------------------------
-// SGH design tokens
-//
-// TODO Figma: every value in this file must be confirmed against Figma node
-// 410-8852 (file "SGH - RB META APEROL"). The current values are carried over
-// from the sibling module RB-AIGlasses-LP > 02_features and are a structural
-// starting point, NOT the Aperol design.
+// SGH design tokens — read from Figma "SGH - RB META APEROL":
+//   desktop node 410:8852 (1440 frame)
+//   mobile  node 410:10431 (375 frame)
 // ---------------------------------------------------------------------------
 
 // Breakpoints (shared with src/scss/utils/_variables.scss)
@@ -16,41 +13,48 @@ $desk-min: 1025px;
 
 // Colours
 $white: #fff;
-$black: #000;
+$dark: #1f1f24; // "Dark" — section title
+$card-border: rgba(255, 255, 255, 0.4);
+// Bottom scrim that keeps the white copy readable over the photo
+$card-scrim: linear-gradient(to bottom, rgba(0, 0, 0, 0) 39.333%, rgba(0, 0, 0, 0.5) 87.75%);
 
-// Spacing scale
-$spacing-xs: 8px;
-$spacing-sm: 16px;
-$spacing-md: 24px;
-$spacing-lg: 32px;
-$spacing-xl: 64px;
-$spacing-section: 60px;
+// Spacing
+$spacing-xs: 8px; // gap between cards, and description -> disclaimer
+$spacing-sm: 16px; // card inner side padding, card title -> body (desktop)
+$spacing-md: 24px; // title -> track, and card title -> body (mobile)
+$spacing-lg: 32px; // card bottom padding
+$spacing-xl: 40px; // section bottom padding, desktop side padding
+$section-padding-inline-mob: 16px;
 
-// Radius
-$border-radius: 8px;
+$border-radius: 2px;
 
 // Typography
 $font-primary: "Helvetica Neue", sans-serif;
 $font-display: "Acta Headline", serif;
 
-$font-size-section-title: 40px;
-$font-size-card-title: 32px;
-$font-size-card-body: 14px;
-$font-size-card-disclaimer: 10px;
-
 $font-weight-regular: 400;
-$font-weight-bold: 700;
+$font-weight-medium: 500;
 
-// Card geometry. Kept as two numbers so the ratio stays readable in the
-// compiled CSS (a bare `320 / 600` would be evaluated to 0.5333).
-$card-width: 320;
-$card-height: 600;
-// Carousel card width: a share of the viewport, below 100% so the next card
-// peeks in and the horizontal scroll is discoverable...
-$card-width-mobile: 82%;
-// ...capped at the design width, otherwise on a 1024px tablet 82% would give
-// an 800px-wide, 1500px-tall card.
-// TODO Figma: node 410-8852 defines desktop and mobile only. Confirm the
-// intended tablet behaviour (capped carousel, as implemented, or a 2-column
-// grid).
-$card-max-width: 320px;
+// Heading 1 — Acta Headline Book
+$font-size-title-desk: 40px;
+$font-size-title-mob: 32px;
+$line-height-title: 1.25;
+
+// Text-xl/Bold — Helvetica Neue Medium
+$font-size-card-title: 20px;
+// Text-md/Regular
+$font-size-card-body: 14px;
+// Text-sm/Regular
+$font-size-card-disclaimer: 12px;
+$letter-spacing-card-disclaimer: 0.12px;
+$line-height-body: 1.5;
+
+// Card geometry. Height is fixed in the design at both breakpoints; the width
+// is 334px on the 1440 desktop frame (which is exactly what four flexed
+// columns come to) and a fixed 320px in the mobile carousel.
+$card-height: 600px;
+$card-width-carousel: 320px;
+// Figma anchors the copy with a fixed padding-top, not to the card bottom, so
+// the titles line up across cards regardless of how long each description is.
+$card-text-top-desk: 450px;
+$card-text-top-mob: 430px;

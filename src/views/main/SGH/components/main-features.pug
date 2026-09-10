@@ -1,4 +1,5 @@
 //- Main features — four cards, horizontal scroll-snap carousel on mobile.
+//- Figma: desktop node 410:8852, mobile node 410:10431.
 //-
 //- NOTE: variant views are rendered by tasks/views.task.js through
 //- `pug.renderFile(..., { include })`, i.e. WITHOUT the pug locals available to
@@ -17,5 +18,6 @@ section.ct_main-features#ct_main-features
         img.ct_main-features__card-image(alt="" loading="lazy" decoding="async")
         .ct_main-features__card-text
           h3.ct_main-features__card-title
-          p.ct_main-features__card-description
-          span.ct_main-features__card-disclaimer(hidden)
+          .ct_main-features__card-body
+            p.ct_main-features__card-description
+            span.ct_main-features__card-disclaimer(hidden)

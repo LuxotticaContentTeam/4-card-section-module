@@ -76,7 +76,9 @@ export class Contents {
       disclaimerEl.textContent = disclaimer;
       disclaimerEl.hidden = !disclaimer;
 
-      this.setImage(card.querySelector(".ct_main-features__card-image"), content.image, title);
+      // The trailing asterisk is a footnote marker for the disclaimer — it is
+      // noise in alt text.
+      this.setImage(card.querySelector(".ct_main-features__card-image"), content.image, title.replace(/\*+$/, ""));
     });
 
     // Refresh the list after any removal above.
