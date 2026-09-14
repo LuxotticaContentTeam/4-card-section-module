@@ -2,6 +2,17 @@ name: Deploy to Akamai PROD
 
 on:
   workflow_dispatch:
+    inputs:
+      variant:
+        description: "Brand variant to build — must exist in projectConfig.json > variants"
+        required: true
+        default: "SGH"
+        type: string
+      release:
+        description: "Also produce release/<VARIANT>/<version>/"
+        required: false
+        default: false
+        type: boolean
 
 jobs:   
   build-and-deploy:
@@ -28,7 +39,13 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}-${{ steps.node.outputs.version }}
 
       - run: npm ci
-      - run: npm run build --akamai_env="PROD"
+      # The build is non-interactive only when VARIANT is set: without it the
+      # prompt task waits for a TTY that CI does not have, and gulp exits 0
+      # having produced nothing. LANGUAGE defaults to projectConfig.json > langs[0].
+      - run: npm run build
+        env:
+          VARIANT: ${{ inputs.variant }}
+          RELEASE: ${{ inputs.release }}
 
       - name: Save generated files
         run: |
@@ -50,6 +67,12 @@ jobs:
             luxottica-media.sftp.upload.akamai.com ${{ secrets.ID_RSA_PUB }}
           if_key_exists: replace
       
+      # NOTE — one brand per run. The build now namespaces its output per variant
+      # (release/<VARIANT>/<version>/), but SOURCE_FOLDER / DEST_FOLDER_PROD are
+      # org-level variables pointing at a single path. Before fanning this job out
+      # into a matrix over every variant, confirm with the Akamai owners how the
+      # per-brand destination folders are laid out, otherwise parallel jobs would
+      # overwrite each other at the same destination.
       - name: Deploy on Akamai
         run: | 
           cat /home/runner/.ssh/known_hosts 
