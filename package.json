@@ -1,5 +1,5 @@
 {
-  "name": "sgh-aperol-main-features",
+  "name": "aperol-main-features",
   "version": "0.0.1",
   "private": true,
   "engines": {
@@ -22,7 +22,7 @@
       "distFolder": "dist/",
       "developmentImage": "./static/images/",
       "productionImage": "TODO_AKAMAI_IMAGE_PATH/",
-      "developmentConf": "./json/SGH/",
+      "developmentConf": "./json/",
       "productionConf": "TODO_AKAMAI_CONF_PATH/",
       "proxy": "http://localhost:8080/"
     }

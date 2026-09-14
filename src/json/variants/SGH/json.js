@@ -2,8 +2,10 @@
 // runtime by getTrad() (src/js/modules/utils.js), which falls back
 // country -> language -> en-us -> first key.
 //
-// `image` is a file name only; contents.js prefixes it with the environment
-// image path (package.json > projectConfigurations.paths).
+// `image` is a path relative to the environment image path
+// (package.json > projectConfigurations.paths), which contents.js prefixes.
+// Images are namespaced per brand — src/static/images/<BRAND>/ — mirroring the
+// fonts convention, so two brands can ship files with the same name.
 //
 // Copy and assets come from Figma "SGH - RB META APEROL", node 410:8852.
 window["ct_cm__@projectNameCamel@Config"] = {
@@ -17,7 +19,7 @@ window["ct_cm__@projectNameCamel@Config"] = {
         title: { "en-us": "Image & video capture*" },
         description: { "en-us": "Capture every moment hands-free." },
         disclaimer: { "en-us": "*Not available on Ray-Ban Audio." },
-        image: "feature-01-capture.jpg",
+        image: "SGH/feature-01-capture.jpg",
       },
       {
         id: "open-ear-audio",
@@ -25,7 +27,7 @@ window["ct_cm__@projectNameCamel@Config"] = {
         description: {
           "en-us": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
         },
-        image: "feature-02-audio.jpg",
+        image: "SGH/feature-02-audio.jpg",
       },
       {
         id: "touch-control",
@@ -33,7 +35,7 @@ window["ct_cm__@projectNameCamel@Config"] = {
         description: {
           "en-us": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
         },
-        image: "feature-03-touch.jpg",
+        image: "SGH/feature-03-touch.jpg",
       },
       {
         id: "meta-ai",
@@ -41,7 +43,7 @@ window["ct_cm__@projectNameCamel@Config"] = {
         description: {
           "en-us": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
         },
-        image: "feature-04-meta-ai.jpg",
+        image: "SGH/feature-04-meta-ai.jpg",
       },
     ],
   },

@@ -4,7 +4,6 @@ import { customLog, getTrad } from "./modules/utils";
 // Replaced at build time by tasks/script.task.js from
 // package.json > projectConfigurations.paths.{developmentImage,productionImage}
 const IMAGE_PATH = "@imagePath@";
-const IS_PROD = "@env@" === "production";
 
 export class Contents {
   constructor({ stateManger, trackingId, json }) {
@@ -92,10 +91,6 @@ export class Contents {
       img.remove();
       return;
     }
-
-    // Anonymous only in production: in dev it would trigger CORS errors on the
-    // local static assets.
-    if (IS_PROD) img.crossOrigin = "anonymous";
 
     img.alt = alt || "";
     img.src = `${IMAGE_PATH}${fileName}`;
