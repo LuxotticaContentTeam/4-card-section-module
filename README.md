@@ -1,8 +1,12 @@
-# Aperol — Main Features
+# 4 Card Section Module
 
-Cross-brand landing page module (Aperol campaign): a **four-card section** that
-shows the cards side by side on desktop and turns into a **horizontally
-scrollable carousel on mobile**.
+Cross-brand landing page module: a **four-card section** that shows the cards
+side by side on desktop and turns into a **horizontally scrollable carousel on
+mobile**.
+
+The name is deliberately generic — the module is the layout, not a campaign.
+First shipped for the SGH Aperol landing page, but nothing in it is tied to that
+campaign beyond the copy and the photos, which live per brand.
 
 The carousel is **pure CSS scroll-snap** — no Swiper, no carousel library, no
 JavaScript driving the scroll.
@@ -87,7 +91,7 @@ Sass compiles happily. The scaffolding templates already include it.
 
 | Key | Value | Notes |
 | --- | --- | --- |
-| `projectName` | `aperol_main_features` | Drives the container id `#ct_cm--aperol-main-features` and the config object `ct_cm__aperolMainFeaturesConfig`. Brand-neutral on purpose: every variant shares them. |
+| `projectName` | `4-card-section-module` | Drives the container id `#ct_cm--4-card-section-module` and the config object `ct_cm__4CardSectionModuleConfig`. Brand-neutral on purpose: every variant shares them. |
 | `langs` | `["en-us"]` | Offered by the `serve` prompt. |
 | `variants` | `["SGH"]` | Brand code is the part before the first `_`. |
 
@@ -118,7 +122,7 @@ brand's images or fonts.
 ## How content flows
 
 The markup is a **static skeleton**: four empty cards, shared across brands. At
-runtime `src/js/contents.js` reads `window.ct_cm__aperolMainFeaturesConfig` and
+runtime `src/js/contents.js` reads `window.ct_cm__4CardSectionModuleConfig` and
 fills titles, descriptions, optional disclaimers and images, resolving each
 string for the current locale through `getTrad()`.
 
