@@ -16,7 +16,6 @@ Thumbs.db
 
 # npm
 node_modules
-package-lock.json
 
 # temporary build files
 .tmp
