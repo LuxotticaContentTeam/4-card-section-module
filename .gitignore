@@ -4,7 +4,6 @@ Thumbs.db
 
 # vscode
 .editorconfig
-.package-lock
 .vscode
 
 # Logs
@@ -15,28 +14,18 @@ Thumbs.db
 .env.*
 !.env.example
 
-# Composer
-vendor
-
 # npm
 node_modules
 package-lock.json
-
-# bower
-bower_components
 
 # temporary build files
 .tmp
 src/scss/.tmp
 
-#build folder
+# build folder
 dist
+release
 
-#images
-src/images
-
-#tanslation files
+# translation files
 .smartling*
 translated/
-
-*-MACNBLX036904*
