@@ -49,6 +49,11 @@ $font-size-card-disclaimer: 12px;
 $letter-spacing-card-disclaimer: 0.12px;
 $line-height-body: 1.5;
 
+// The 1440 Figma frame. Past this width the section stops growing and centres:
+// the cards keep the 334x600 ratio the photos were cropped for, instead of
+// stretching horizontally and letting object-fit crop the subjects' heads.
+$design-width-desk: 1440px;
+
 // Card geometry. Height is fixed in the design at both breakpoints; the width
 // is 334px on the 1440 desktop frame (which is exactly what four flexed
 // columns come to) and a fixed 320px in the mobile carousel.

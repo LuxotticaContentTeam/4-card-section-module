@@ -9,6 +9,11 @@
 // ---------------------------------------------------------------------------
 
 .ct_main-features {
+  // Border-box so max-width counts the side padding: at 1440 that leaves
+  // exactly 1360 of content, i.e. four 334px cards with three 8px gaps.
+  box-sizing: border-box;
+  max-width: $design-width-desk;
+  margin-inline: auto;
   padding: 0 $spacing-xl $spacing-xl;
 
   @media (max-width: $tab-max) {
