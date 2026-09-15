@@ -1,0 +1,122 @@
+{
+  "main_features": {
+    "title": {
+      "en-us": "Main features",
+      "en": "Main features",
+      "fr": "Caractéristiques principales",
+      "fr-ca": "Principales caractéristiques",
+      "es": "Características principales",
+      "es-mx": "Características principales",
+      "de": "Hauptmerkmale",
+      "nl": "Belangrijkste kenmerken"
+    },
+    "cards": [
+      {
+        "id": "image-video-capture",
+        "title": {
+          "en-us": "Image & video capture*",
+          "en": "Image & video capture*",
+          "fr": "Capture d’image et de vidéo*",
+          "fr-ca": "Capture d’images et de vidéos*",
+          "es": "Captura de imágenes y vídeo*",
+          "es-mx": "Captura de imágenes y vídeo*",
+          "de": "Bild- und Videoaufnahme*",
+          "nl": "Beeld- en video-opname*"
+        },
+        "description": {
+          "en-us": "Capture every moment hands-free.",
+          "en": "Capture every moment hands-free.",
+          "fr": "Capturez chaque instant en mode mains libres.",
+          "fr-ca": "Capturez chaque moment en mode mains libres.",
+          "es": "Captura cada momento sin usar las manos.",
+          "es-mx": "Captura cada momento sin usar las manos.",
+          "de": "Halte jeden Moment freihändig fest.",
+          "nl": "Leg elk moment handsfree vast."
+        },
+        "disclaimer": {
+          "en-us": "*Not available on Ray-Ban Audio.",
+          "en": "*Not available on Ray-Ban Audio.",
+          "fr": "*Non disponible sur Ray-Ban Audio.",
+          "fr-ca": "* Non disponible sur Ray-Ban Audio.",
+          "es": "*No disponible en Ray-Ban Audio.",
+          "es-mx": "*No disponible en Ray-Ban Audio.",
+          "de": "*Nicht verfügbar für Ray-Ban Audio.",
+          "nl": "*Niet beschikbaar op Ray-Ban Audio."
+        },
+        "image": "SGH/feature-01-capture.jpg"
+      },
+      {
+        "id": "open-ear-audio",
+        "title": {
+          "en-us": "Open-ear audio",
+          "en": "Open-ear audio",
+          "fr": "Audio à oreille ouverte",
+          "fr-ca": "Audio à oreille ouverte",
+          "es": "Audio de oído abierto",
+          "es-mx": "Audio de oído abierto",
+          "de": "Open-Ear-Audio",
+          "nl": "Open-ear audio"
+        },
+        "description": {
+          "en-us": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "en": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "fr": "Profitez d’un son haut de gamme tout en restant à l’écoute des conversations et des sons environnants.",
+          "fr-ca": "Profitez d’un son de qualité supérieure tout en restant à l’écoute des conversations et des sons ambiants.",
+          "es": "Disfruta de un audio de alta calidad mientras sigues escuchando las conversaciones y los sonidos ambientales a tu alrededor.",
+          "es-mx": "Disfruta de un audio de alta calidad mientras sigues escuchando las conversaciones y los sonidos ambientales a tu alrededor.",
+          "de": "Erlebe hochwertiges Audio, während Gespräche und Umgebungsgstöne weiterhin hörbar bleiben.",
+          "nl": "Ervaar hoogwaardige audio terwijl je gesprekken en omgevingsgeluiden binnen gehoorsafstand houdt."
+        },
+        "image": "SGH/feature-02-audio.jpg"
+      },
+      {
+        "id": "touch-control",
+        "title": {
+          "en-us": "Touch control",
+          "en": "Touch control",
+          "fr": "Commande tactile",
+          "fr-ca": "Commande tactile",
+          "es": "Control táctil",
+          "es-mx": "Control táctil",
+          "de": "Berührungssteuerung",
+          "nl": "Aanraakbediening"
+        },
+        "description": {
+          "en-us": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "en": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "fr": "Contrôlez la musique, prenez des photos et passez des appels en toute fluidité grâce à des commandes tactiles réactives.",
+          "fr-ca": "Contrôlez la musique, prenez des photos et passez des appels facilement grâce aux commandes tactiles réactives.",
+          "es": "Controla la música sin esfuerzo, haz fotos y realiza llamadas con controles táctiles sensibles.",
+          "es-mx": "Controla la música sin esfuerzo, haz fotos y realiza llamadas con controles táctiles sensibles.",
+          "de": "Steuere Musik nahtlos, mach Fotos und führe Anrufe mit reaktionsschnellen Touch-Bedienelementen.",
+          "nl": "Bedien moeiteloos muziek, maak foto's en voer gesprekken met responsieve touchbediening."
+        },
+        "image": "SGH/feature-03-touch.jpg"
+      },
+      {
+        "id": "meta-ai",
+        "title": {
+          "en-us": "Meta AI",
+          "en": "Meta AI",
+          "fr": "Meta AI",
+          "fr-ca": "Meta AI",
+          "es": "Meta AI",
+          "es-mx": "Meta AI",
+          "de": "Meta AI",
+          "nl": "Meta AI"
+        },
+        "description": {
+          "en-us": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "en": "Get answers about what you see, personalised suggestions, and helpful reminders on the go.",
+          "fr": "Obtenez des réponses sur ce que vous voyez, des suggestions personnalisées et des rappels utiles en déplacement.",
+          "fr-ca": "Obtenez des réponses sur ce que vous voyez, des suggestions personnalisées et des rappels utiles en déplacement.",
+          "es": "Obtén respuestas sobre lo que ves, sugerencias personalizadas y recordatorios útiles sobre la marcha.",
+          "es-mx": "Obtén respuestas sobre lo que ves, sugerencias personalizadas y recordatorios útiles sobre la marcha.",
+          "de": "Erhalte Antworten zu dem, was du siehst, personalisierte Vorschläge und hilfreiche Erinnerungen für unterwegs.",
+          "nl": "Krijg antwoorden over wat je ziet, gepersonaliseerde suggesties en handige herinneringen voor onderweg."
+        },
+        "image": "SGH/feature-04-meta-ai.jpg"
+      }
+    ]
+  }
+}

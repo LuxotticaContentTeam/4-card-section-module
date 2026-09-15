@@ -1,6 +1,11 @@
-<!-- Paths of the built files once uploaded to Akamai. Concatenated in front of
-     the built HTML by tasks/views.task.js when creating a release.
+<!-- Prepended to the built HTML by tasks/views.task.js when creating a release,
+     producing release/SGH/<version>/index__<version>.html — the standalone
+     preview page, not the CoreMedia fragment (that one is fragment.html).
+
+     One tag is enough: the bundle injects the stylesheet and fetches the
+     content json itself (src/js/modules/bootstrap.js). Do not add a <link>
+     here — it would bypass the injector's data-ct-css guard and the page would
+     end up with the stylesheet twice.
+
      TODO: replace [PATH] and [VERSION] with the real values before release. -->
-<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://media.sunglasshut.com/[PATH]/style/main__[VERSION].min.css" />
-<script type="module" src="https://media.sunglasshut.com/[PATH]/json/json[ID].js"></script>
-<script type="module" src="https://media.sunglasshut.com/[PATH]/script/main__[VERSION].min.js"></script>
+<script defer src="https://media.sunglasshut.com/[PATH]/script/main__[VERSION].min.js"></script>

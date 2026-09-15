@@ -1,5 +1,6 @@
 import StateManager from "./modules/stateManager";
-import { checkData, customLog, eventCatcher } from "./modules/utils";
+import { customLog, eventCatcher } from "./modules/utils";
+import { injectCss, loadConfig } from "./modules/bootstrap";
 import Lazy from "./modules/lazy";
 
 import { Contents } from "./contents";
@@ -29,8 +30,11 @@ class Main {
     customLog("started");
     this.envInfo();
 
-    // GET DATA
-    this.json = await checkData(this.dataObjId); // check if the data is available in the window object
+    // LOAD THE STYLESHEET — the fragment only ships the critical css
+    await injectCss();
+
+    // GET DATA — from the inline json when there is one, from the asset host otherwise
+    this.json = await loadConfig(this.dataObjId);
 
     if (!this.json) {
       customLog("Removing the module as no data found", "", "wait");

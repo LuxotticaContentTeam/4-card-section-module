@@ -24,6 +24,8 @@
       "productionImage": "TODO_AKAMAI_IMAGE_PATH/",
       "developmentConf": "./json/",
       "productionConf": "TODO_AKAMAI_CONF_PATH/",
+      "developmentAsset": "./",
+      "productionAsset": "TODO_ASSET_BASE_URL/",
       "proxy": "http://localhost:8080/"
     }
   },

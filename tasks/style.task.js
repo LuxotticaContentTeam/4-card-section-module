@@ -56,6 +56,16 @@ const scss = (done) => {
     const criticalScss = src(criticalScssPath)
       .pipe($.if(!isProd, $.sourcemaps.init()))
       .pipe($.plumber())
+      // critical.scss is compiled on its own, so it needs the same injected
+      // variables main.scss gets — $bannerName above all, since the component
+      // rules are nested under the module container id.
+      .pipe(
+        $.sassVariables({
+          $env: isProd ? "production" : "development",
+          $brand: global.selectedBrand,
+          $bannerName: "#ct_cm--" + projectNameNormal,
+        })
+      )
       .pipe(sass().on("error", sass.logError))
       .pipe($.if(!isProd, $.sourcemaps.write()))
       .pipe(dest(".tmp/css")); // Output critical.css separately

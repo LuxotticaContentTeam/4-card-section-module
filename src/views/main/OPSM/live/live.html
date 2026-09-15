@@ -1,0 +1,11 @@
+<!-- Prepended to the built HTML by tasks/views.task.js when creating a release,
+     producing release/OPSM/<version>/index__<version>.html — the standalone
+     preview page, not the CoreMedia fragment (that one is fragment.html).
+
+     One tag is enough: the bundle injects the stylesheet and fetches the
+     content json itself (src/js/modules/bootstrap.js). Do not add a <link>
+     here — it would bypass the injector's data-ct-css guard and the page would
+     end up with the stylesheet twice.
+
+     TODO: replace [PATH] and [VERSION] with the real values before release. -->
+<script defer src="https://media.sunglasshut.com/[PATH]/script/main__[VERSION].min.js"></script>

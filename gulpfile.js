@@ -18,6 +18,7 @@ const { createJs, createScss, createJson, createViews, updateProjectConfig } = r
 const promptNewProj = require("./tasks/promptNewProj.js");
 const staticAsset = require("./tasks/staticAsset.task.js");
 const buildEspot = require("./tasks/buildEspot.task.js");
+const { buildFragment, exportFragment } = require("./tasks/buildFragment.task.js");
 const { json, jsonBuild } = require("./tasks/json.task.js");
 const recap = require("./tasks/recap.task.js");
 const promptRemove = require("./tasks/promptRemove.task.js");
@@ -64,6 +65,8 @@ exports.build = series(
   criticalJs,
   buildEspot,
   exportEspot,
+  buildFragment,
+  exportFragment,
   recap
 );
 

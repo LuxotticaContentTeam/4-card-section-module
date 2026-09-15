@@ -1,10 +1,13 @@
 {
   "projectName": "4-card-section-module",
   "serveInNewTab": false,
-  "langs": [
-    "en-us"
-  ],
   "variants": [
-    "SGH"
+    "SGH",
+    "OO",
+    "OP",
+    "OPSM",
+    "PO",
+    "RB",
+    "SV"
   ]
 }

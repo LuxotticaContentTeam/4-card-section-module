@@ -1,0 +1,67 @@
+// ---------------------------------------------------------------------------
+// SV design tokens — PLACEHOLDER.
+//
+// Copied from SGH so the variant builds. Every value below still describes the
+// SGH design: replace it with SV's own tokens (and drop this notice) before
+// the variant ships. See README > "Adding a brand".
+// ---------------------------------------------------------------------------
+
+// Breakpoints (shared with src/scss/utils/_variables.scss)
+$mob-small: 375px;
+$mob-max: 767px;
+$tab-min: 768px;
+$tab-max: 1024px;
+$desk-min: 1025px;
+
+// Colours
+$white: #fff;
+$dark: #1f1f24; // "Dark" — section title
+$card-border: rgba(255, 255, 255, 0.4);
+// Bottom scrim that keeps the white copy readable over the photo
+$card-scrim: linear-gradient(to bottom, rgba(0, 0, 0, 0) 39.333%, rgba(0, 0, 0, 0.5) 87.75%);
+
+// Spacing
+$spacing-xs: 8px; // gap between cards, and description -> disclaimer
+$spacing-sm: 16px; // card inner side padding, card title -> body (desktop)
+$spacing-md: 24px; // title -> track, and card title -> body (mobile)
+$spacing-lg: 32px; // card bottom padding
+$spacing-xl: 40px; // section bottom padding, desktop side padding
+$section-padding-inline-mob: 16px;
+
+$border-radius: 2px;
+
+// Typography
+$font-primary: "Helvetica Neue", sans-serif;
+$font-display: "Acta Headline", serif;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+
+// Heading 1 — Acta Headline Book
+$font-size-title-desk: 40px;
+$font-size-title-mob: 32px;
+$line-height-title: 1.25;
+
+// Text-xl/Bold — Helvetica Neue Medium
+$font-size-card-title: 20px;
+// Text-md/Regular
+$font-size-card-body: 14px;
+// Text-sm/Regular
+$font-size-card-disclaimer: 12px;
+$letter-spacing-card-disclaimer: 0.12px;
+$line-height-body: 1.5;
+
+// The 1440 Figma frame. Past this width the section stops growing and centres:
+// the cards keep the 334x600 ratio the photos were cropped for, instead of
+// stretching horizontally and letting object-fit crop the subjects' heads.
+$design-width-desk: 1440px;
+
+// Card geometry. Height is fixed in the design at both breakpoints; the width
+// is 334px on the 1440 desktop frame (which is exactly what four flexed
+// columns come to) and a fixed 320px in the mobile carousel.
+$card-height: 600px;
+$card-width-carousel: 320px;
+// Figma anchors the copy with a fixed padding-top, not to the card bottom, so
+// the titles line up across cards regardless of how long each description is.
+$card-text-top-desk: 450px;
+$card-text-top-mob: 430px;

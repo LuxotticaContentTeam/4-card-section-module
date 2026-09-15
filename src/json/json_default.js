@@ -1,5 +1,5 @@
 // Smartling source file: the default copy sent out for translation.
-// Mirrors the shape of src/json/variants/<BRAND>/json.js — one entry per
+// Mirrors the shape of src/json/variants/<BRAND>/json.json — one entry per
 // translatable string. Shared by every brand: the copy is what varies.
 window["ct_cm__@projectNameCamel@Config"] = {
   main_features: {
