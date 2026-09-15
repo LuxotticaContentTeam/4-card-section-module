@@ -4,7 +4,7 @@ const { series } = require("gulp");
 
 // Require custom tasks
 const prompt = require("./tasks/prompt.task.js");
-const clean = require("./tasks/clean.task.js");
+const { clean, cleanRelease } = require("./tasks/clean.task.js");
 const { views, exportViews, exportEspot } = require("./tasks/views.task.js");
 const genericAssets = require("./tasks/generic-assets.task.js");
 const images = require("./tasks/images.task.js");
@@ -50,6 +50,7 @@ exports.build = series(
   checkBoilerJson,
   prompt,
   clean,
+  cleanRelease,
   views,
   exportViews,
   json,

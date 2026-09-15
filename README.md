@@ -52,11 +52,20 @@ VARIANT=SGH RELEASE=yes npm run build  # and write release/SGH/<version>/
 | --- | --- |
 | `VARIANT` | Required to skip the prompt. Must exist in `projectConfig.json` > `variants`; an unknown value fails the build instead of silently building the wrong brand. |
 | `LANGUAGE` | Optional, and dev-only — a production build ships every locale in one json. Defaults to the variant's first locale. Must be one the variant actually has: `LANGUAGE=pt` fails on SGH and passes on PO. |
-| `RELEASE` | Optional, `yes`/`true`/`1` to also produce `release/<VARIANT>/<version>/`. |
+| `RELEASE` | Optional, `yes`/`true`/`1` to also produce `release/<VARIANT>/<version>/`. This is the "Create release?" prompt. |
 
 Building several brands means running the build once per variant — the pipeline
 handles one variant per run by design, and wipes `dist/` between runs. Only
 `release/` keeps them side by side.
+
+Answering **no** to "Create release?" costs you nothing in `dist/`: the release
+step is a copy that runs afterwards, and `dist/` comes out byte-for-byte the
+same either way. What the release adds is the **one concatenated bundle**,
+`main__<version>.min.js` — in `dist/` the javascript is still two separate files
+(`dist/js/main.min.js` and `dist/js/<BRAND>/main.min.js`), and the single name
+`fragment.html` points at exists only under `release/`. So: **no** while you are
+just checking that the build passes, **yes** whenever the files have to leave
+your machine.
 
 ## Adding a brand
 
@@ -179,6 +188,18 @@ VARIANT=SGH RELEASE=yes npm run build
 Everything to upload is now in `release/SGH/0.0.1/` (`0.0.1` is
 `package.json` > `version`).
 
+⚠️ **Bump `package.json` > `version` yourself before cutting a release the
+previous one must outlive.** Nothing increments it: build twice without
+touching it and the second run writes over `release/SGH/0.0.1/` — same folder,
+same filenames. That is usually what you want while iterating, and exactly what
+you do not want once a version is live, because the urls in the fragment carry
+the version and a silent overwrite changes what those urls serve.
+
+Each run wipes only the folder it is about to write,
+`release/<VARIANT>/<version>/`, so nothing stale survives into an upload. Other
+brands and older versions are left alone — that is what keeps several brands
+side by side in `release/` when you build them one after another.
+
 **3. Upload by FTP** — three files, three folders, all under the base url from
 step 1:
 
@@ -288,6 +309,13 @@ check on that brand's live storefront first, on every market it ships to:
 
 `image` in the JSON is a path relative to the environment image path, so it
 carries the brand folder: `"SGH/feature-01-capture.jpg"`.
+
+A value that already points somewhere on its own is used verbatim instead —
+an absolute url, a protocol-relative one, a root-relative path or a data uri.
+That is what makes `"https://placehold.co/600x400"` work while roughing out a
+layout: without it the prefix is still prepended and the src comes out as
+`./static/images/https://placehold.co/600x400`, which 404s silently
+(`isSelfContainedUrl` in `src/js/contents.js`).
 
 The shared `main.pug` receives pug locals; variant files are rendered by
 `tasks/views.task.js` via `pug.renderFile(..., { include })` and get **none** —

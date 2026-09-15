@@ -43,7 +43,7 @@
           "de": "*Nicht verfügbar für Ray-Ban Audio.",
           "nl": "*Niet beschikbaar op Ray-Ban Audio."
         },
-        "image": "SGH/feature-01-capture.jpg"
+        "image": "https://media.sunglasshut.com/2026/09_RBMAPEROL/RBM_LP_MOBILE_FEATURES_CAPTURE.jpg"
       },
       {
         "id": "open-ear-audio",
@@ -67,7 +67,7 @@
           "de": "Erlebe hochwertiges Audio, während Gespräche und Umgebungsgstöne weiterhin hörbar bleiben.",
           "nl": "Ervaar hoogwaardige audio terwijl je gesprekken en omgevingsgeluiden binnen gehoorsafstand houdt."
         },
-        "image": "SGH/feature-02-audio.jpg"
+        "image": "https://media.sunglasshut.com/2026/09_RBMAPEROL/RBM_LP_DESKTOP_FEATURES_AUDIO.jpg"
       },
       {
         "id": "touch-control",
@@ -91,7 +91,7 @@
           "de": "Steuere Musik nahtlos, mach Fotos und führe Anrufe mit reaktionsschnellen Touch-Bedienelementen.",
           "nl": "Bedien moeiteloos muziek, maak foto's en voer gesprekken met responsieve touchbediening."
         },
-        "image": "SGH/feature-03-touch.jpg"
+        "image": "https://media.sunglasshut.com/2026/09_RBMAPEROL/RBM_LP_DESKTOP_FEATURES_CONTROL.jpg"
       },
       {
         "id": "meta-ai",
@@ -115,7 +115,7 @@
           "de": "Erhalte Antworten zu dem, was du siehst, personalisierte Vorschläge und hilfreiche Erinnerungen für unterwegs.",
           "nl": "Krijg antwoorden over wat je ziet, gepersonaliseerde suggesties en handige herinneringen voor onderweg."
         },
-        "image": "SGH/feature-04-meta-ai.jpg"
+        "image": "https://media.sunglasshut.com/2026/09_RBMAPEROL/RBM_LP_DESKTOP_FEATURES_META-AI.jpg"
       }
     ]
   }

@@ -5,6 +5,13 @@ import { customLog, getTrad } from "./modules/utils";
 // package.json > projectConfigurations.paths.{developmentImage,productionImage}
 const IMAGE_PATH = "@imagePath@";
 
+// `image` in the content json is normally a file name relative to IMAGE_PATH,
+// carrying the brand folder ("SGH/feature-01-capture.jpg"). A value that already
+// points somewhere on its own — an absolute url, a protocol-relative one, a
+// root-relative path, a data uri — must be left alone: prefixing it produces
+// "./static/images/https://..." and the image silently 404s.
+const isSelfContainedUrl = (value) => /^(?:[a-z][a-z0-9+.-]*:|\/\/|\/)/i.test(value);
+
 export class Contents {
   constructor({ stateManger, trackingId, json }) {
     this.json = json;
@@ -93,7 +100,7 @@ export class Contents {
     }
 
     img.alt = alt || "";
-    img.src = `${IMAGE_PATH}${fileName}`;
+    img.src = isSelfContainedUrl(fileName) ? fileName : `${IMAGE_PATH}${fileName}`;
   }
 
   eventHandler() {

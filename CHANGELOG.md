@@ -21,6 +21,13 @@
 - SGH copy carries eight locale keys: `pt` and `pt-br` dropped, `nl` added.
 - The `_meta` block is gone from SGH's content json and from the scaffold
   template. Nothing read it, and it shipped to the browser with the copy.
+- A release build now wipes `release/<VARIANT>/<version>/` before writing it, so
+  stale files from an earlier run cannot survive into an upload. Scoped to that
+  one folder: sibling brands and older versions are left alone.
+- **Fix** — an `image` in the content json that is already an absolute url,
+  protocol-relative, root-relative or a data uri is no longer prefixed with the
+  environment image path. Placeholder urls used to come out as
+  `./static/images/https://placehold.co/...` and 404 silently.
 - **Fix** — SGH store detection waited for `window.lang`, a global that does not
   exist on sunglasshut.com, so the production module would have polled forever
   and never rendered. It now reads the `lang` attribute of the `<html>` tag,
