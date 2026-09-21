@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // ---------------------------------------------------------------------------
 // Main features — four cards.
 //
@@ -9,10 +11,12 @@
 // ---------------------------------------------------------------------------
 
 .ct_main-features {
-  // Border-box so max-width counts the side padding: at 1440 that leaves
-  // exactly 1360 of content, i.e. four 334px cards with three 8px gaps.
+  // Border-box so the side padding counts inside the width: at 1440 that
+  // leaves exactly 1360 of content, i.e. four 334px cards with three 8px gaps.
   box-sizing: border-box;
-  max-width: $design-width-desk;
+  // No width cap: the section fills its CoreMedia row at every size, and the
+  // cards scale with it. $design-width-desk stays the reference the design is
+  // drawn at (four 334px columns land exactly there), not a ceiling.
   margin-inline: auto;
   padding: 0 $spacing-xl $spacing-xl;
 
@@ -67,13 +71,23 @@
     // Figma's 334x600 / 320x600 is measured including the 1px border.
     box-sizing: border-box;
     flex: 1 1 0; // desktop: four equal columns
-    height: $card-height;
+    // Ratio, not a fixed height: the columns narrow below the 1440 frame and
+    // the card has to lose height with them, or object-fit crops the photo in
+    // from the sides. At 1440 this still resolves to exactly 334x600.
+    //
+    // Nothing bounds the height: not `height`, which would win over the ratio
+    // outright and leave aspect-ratio nothing to resolve, and not `max-height`,
+    // which would clamp the card out of ratio once it grew past it. The card is
+    // as tall as its width and the ratio say, at every size.
+    aspect-ratio: math.div($card-width-desk, $card-height); // 1 : 1.796
     border: 1px solid $card-border;
     border-radius: $border-radius;
     overflow: hidden;
 
     @media (max-width: $tab-max) {
       flex: 0 0 $card-width-carousel;
+      // The carousel card has a fixed width, so this comes to 600px as before.
+      aspect-ratio: math.div($card-width-carousel, $card-height);
       scroll-snap-align: start;
     }
 
@@ -99,6 +113,11 @@
   }
 
   &__card-image {
+    // Taken out of flow so the card's height comes from its aspect-ratio alone,
+    // never from the image, and so height:100% has a definite box to resolve
+    // against whatever that ratio works out to.
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -110,21 +129,27 @@
     z-index: 1; // above the ::after scrim
     left: 0;
     right: 0;
-    // Anchored to the top, as in Figma, so the titles align across the four
-    // cards whatever the length of each description. `bottom` only bounds the
-    // block; the copy still flows from the top.
-    top: $card-text-top-desk;
+    // Anchored to the bottom: the block is exactly as tall as the copy inside
+    // it, so `bottom` is the real distance from the last line to the card edge
+    // and changing it moves the text, at every card size.
+    //
+    // This used to carry a proportional min-height, to hold Figma's 450px title
+    // anchor. It made `bottom` misleading: the block sat where you put it, but
+    // the copy stayed pinned to the block's top, so on a tall card the text
+    // floated well above the edge and `bottom: 0` looked like it did nothing.
+    // The copy is a fixed pixel height while the card scales, so the two cannot
+    // both hold — see README, "Design source".
+    top: auto;
     bottom: $spacing-lg;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
     gap: $spacing-sm;
     padding-inline: $spacing-sm;
     color: $white;
     font-family: $font-primary;
 
     @media (max-width: $tab-max) {
-      top: $card-text-top-mob;
       gap: $spacing-md;
     }
   }

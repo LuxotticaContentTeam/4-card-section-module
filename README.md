@@ -200,22 +200,26 @@ Each run wipes only the folder it is about to write,
 brands and older versions are left alone — that is what keeps several brands
 side by side in `release/` when you build them one after another.
 
-**3. Upload by FTP** — three files, three folders, all under the base url from
-step 1:
+**3. Upload by FTP** — three files, **all three into the folder
+`productionAsset` points at**, side by side. No subfolders: the urls the module
+builds are the base url plus the file name, nothing in between.
 
-| File from `release/<BRAND>/<version>/` | Upload to |
+| File from `release/<BRAND>/<version>/` | Url it answers at |
 | --- | --- |
-| `main__<version>.min.css` | `<base>/style/` |
-| `json__<version>.json` | `<base>/json/` |
-| `main__<version>.min.js` | `<base>/script/` |
+| `main__<version>.min.js` | `<base>/main__<version>.min.js` |
+| `main__<version>.min.css` | `<base>/main__<version>.min.css` |
+| `json__<version>.json` | `<base>/json__<version>.json` |
 
-Plus the brand's photos, under whatever `productionImage` points to. Keep the
-`style/`, `json/` and `script/` folder names: they are part of the urls the
-bundle builds.
+So with `productionAsset` set to
+`https://media.sunglasshut.com/four-card-section-module/`, the three files go
+straight into `four-card-section-module/` and nothing else needs creating.
+
+Plus the brand's photos. Those are independent: an `image` in the content json
+that is already an absolute url is used as it stands, and only a relative one
+gets `productionImage` prefixed to it.
 
 **4. Check the three urls answer 200** in a browser before going further, e.g.
-`<base>/script/main__0.0.1.min.js`. A 404 here is the usual cause of a blank
-module.
+`<base>/main__0.0.1.min.js`. A 404 here is the usual cause of a blank module.
 
 **5. Paste `dist/fragment.html`** — the whole file, from `<style>` to
 `</script>` — into the CoreMedia row. Nothing else goes in the row.
@@ -332,13 +336,51 @@ does the rest, and respects `prefers-reduced-motion`).
 | Desktop (1440) | `410:8852` | 334x600, four equal columns |
 | Mobile (375) | `410:10431` | 320x600, carousel |
 
-Past 1440 the section stops growing and centres. The cards have a fixed 600px
-height, so letting them widen would make `object-fit: cover` crop the photos
-vertically — the models' heads go first.
+The section has **no width cap and the cards have no height cap**. It fills its
+CoreMedia row at every size and the cards scale with it, holding `aspect-ratio`
+1 : 1.796 — the 334x600 Figma draws — from the narrowest desktop column up.
+1440 is the width the design is *drawn* at, where four columns land on exactly
+334px; it is not a ceiling.
 
-The card copy is anchored 450px (desktop) / 430px (mobile) from the card top,
-not to its bottom edge — that is what keeps the four titles on one line
-regardless of how long each description runs.
+A card that narrowed while staying 600 tall would hand `object-fit: cover` an
+ever taller box and crop the photo in from the sides, which is what used to
+happen between 1025 and 1440.
+
+⚠️ **Any height bound defeats this.** An explicit `height` leaves `aspect-ratio`
+nothing to resolve and wins outright, whatever the specificity; a `max-height`
+clamps the card out of ratio as soon as it grows past it.
+That matters most in `scss/critical.scss`, because that block is **inlined into
+`fragment.html`**: a fragment pasted into CoreMedia before this change keeps
+overriding the stylesheet you upload afterwards, and the cards go back to 600px
+with no sign of why. Re-paste the fragment whenever the critical css changes —
+re-uploading the three asset files is not enough.
+
+The copy block is anchored to the **bottom** of the card and is exactly as tall
+as the copy inside it (`justify-content: flex-end`, no min-height). So
+`$spacing-lg` is the real distance from the last line to the card edge, on every
+card at every size — measured 33px (32 + the 1px border) at 1025, 1200, 1440 and
+1920 alike — and changing `bottom` moves the text, which is the obvious thing
+for it to do.
+
+**The titles no longer align exactly across the four cards.** They sit wherever
+their own copy height puts them above the shared baseline: at 1440 the spread is
+about 20px (458 to 479 from the card top), because card two and card four carry
+a three-line description where card one and card three carry two.
+
+This is the trade-off, and it cannot be dodged in CSS: the card scales while the
+type is a fixed pixel height, so a block that ends at a constant distance from
+the bottom cannot also start at a constant fraction from the top. Two earlier
+attempts, both worse:
+
+- **top-anchored** (`top: 450px`) — titles aligned perfectly at every width, but
+  card one's disclaimer grew down until it nearly touched the card edge;
+- **bottom-anchored with a proportional `min-height`** — titles aligned *and* the
+  block sat 32px off the bottom, but the copy stayed pinned to the block's top,
+  so the visible gap under the last line grew with the card (58px at 1440, 183px
+  at 2560) and `bottom` appeared to do nothing on a tall card.
+
+Scaling the type with the card — `clamp()`, or container units — would let the
+titles realign and keep the gap constant. Nothing does that today.
 
 Card images are 668x1200, twice the desktop card and the same aspect ratio, so
 `cover` crops essentially nothing at the design width.

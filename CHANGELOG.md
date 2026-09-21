@@ -21,6 +21,29 @@
 - SGH copy carries eight locale keys: `pt` and `pt-br` dropped, `nl` added.
 - The `_meta` block is gone from SGH's content json and from the scaffold
   template. Nothing read it, and it shipped to the browser with the copy.
+- **Fix** — cards hold their 334x600 (320x600 mobile) aspect ratio at every
+  width instead of a fixed 600px height. Between 1025 and 1440 the columns
+  narrow while the height stayed put, so `object-fit: cover` cropped the photos
+  in from the sides. Nothing bounds the height now, and the section's
+  `max-width: 1440px` is gone with it: the module fills its CoreMedia row at
+  every size rather than centring narrower than the row past 1440, and the
+  cards scale with it. Note this touches
+  `critical.scss`, inlined into `fragment.html`: the fragment has to be
+  re-pasted into CoreMedia or the stale inline `height: 600px` keeps winning
+  over the uploaded stylesheet.
+- **Fix** — card copy is anchored to the bottom of the card, a real
+  `$spacing-lg` clear of the edge on every card at every size. Card one's
+  two-line title plus disclaimer used to grow down into that gap until it almost
+  touched the card edge. The block no longer carries a proportional min-height:
+  that kept the four titles aligned, but pinned the copy to the block's top, so
+  on a tall card the text floated well above the edge and `bottom` looked inert.
+  Titles now sit where their own copy height puts them — about 20px of spread at
+  1440. Scaling the type with the card would close the gap; nothing does today.
+- The three runtime assets now sit directly at `productionAsset`, instead of
+  under `style/`, `json/` and `script/` subfolders. Upload the js, the css and
+  the json side by side into the one folder the base url names; the urls are
+  that path plus the file name. Affects `bootstrap.js`, the fragment's script
+  tag and every brand's `live.html`.
 - A release build now wipes `release/<VARIANT>/<version>/` before writing it, so
   stale files from an earlier run cannot survive into an upload. Scoped to that
   one folder: sibling brands and older versions are left alone.

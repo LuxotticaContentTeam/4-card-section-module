@@ -56,12 +56,22 @@ $line-height-body: 1.5;
 // stretching horizontally and letting object-fit crop the subjects' heads.
 $design-width-desk: 1440px;
 
-// Card geometry. Height is fixed in the design at both breakpoints; the width
-// is 334px on the 1440 desktop frame (which is exactly what four flexed
-// columns come to) and a fixed 320px in the mobile carousel.
+// Card geometry. Figma draws 334x600 on the 1440 desktop frame (334px is
+// exactly what four flexed columns come to) and 320x600 in the mobile carousel.
+//
+// The card holds that ratio at every width rather than pinning the height: the
+// desktop columns shrink below 1440, and a card that kept its 600px while
+// narrowing would hand object-fit an ever taller box to cover, cropping the
+// photos in from the sides.
 $card-height: 600px;
+$card-width-desk: 334px;
 $card-width-carousel: 320px;
-// Figma anchors the copy with a fixed padding-top, not to the card bottom, so
-// the titles line up across cards regardless of how long each description is.
-$card-text-top-desk: 450px;
-$card-text-top-mob: 430px;
+
+// Where the copy sits. Figma puts the title 450px down a 600px card (430 on
+// mobile) and leaves $spacing-lg below the last line.
+//
+// Expressed as a share of the card height, not in px, so the anchor travels
+// with the card as it scales — 75% of a shorter card is the same place in the
+// composition, where a fixed 450px would not be.
+$card-text-top-desk: 75%; // 450 / 600
+$card-text-top-mob: 71.667%; // 430 / 600

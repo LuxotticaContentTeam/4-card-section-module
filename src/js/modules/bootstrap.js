@@ -8,8 +8,9 @@
  *
  * Every url is derived from @assetPath@ (package.json >
  * projectConfigurations.paths > productionAsset), replaced at build time by
- * tasks/script.task.js, mirroring the Akamai layout already declared in
- * src/views/main/<BRAND>/live/live.html: <base>/style/, <base>/json/, <base>/script/.
+ * tasks/script.task.js. The three files sit directly at that path — no
+ * style/, json/ or script/ subfolder — so whatever productionAsset points at
+ * is exactly the folder to upload them into, nothing more to create by hand.
  */
 import { customLog } from "./utils";
 
@@ -18,8 +19,8 @@ const BUILD_VERSION = "@buildVersion@";
 const PROJECT_NAME = "@projectName@";
 const IS_DEV = "@env@" === "development";
 
-const CSS_URL = IS_DEV ? `${ASSET_PATH}css/main.css` : `${ASSET_PATH}style/main__${BUILD_VERSION}.min.css`;
-const JSON_URL = IS_DEV ? `${ASSET_PATH}json/@currentVariant@/json.json` : `${ASSET_PATH}json/json__${BUILD_VERSION}.json`;
+const CSS_URL = IS_DEV ? `${ASSET_PATH}css/main.css` : `${ASSET_PATH}main__${BUILD_VERSION}.min.css`;
+const JSON_URL = IS_DEV ? `${ASSET_PATH}json/@currentVariant@/json.json` : `${ASSET_PATH}json__${BUILD_VERSION}.json`;
 
 /**
  * Add the stylesheet to <head>, once per page.
