@@ -3,6 +3,8 @@
     "title": {
       "en-us": "Main features",
       "en": "Main features",
+      "en-au": "Main features",
+      "en-nz": "Main features",
       "fr": "Caractéristiques principales",
       "fr-ca": "Principales caractéristiques",
       "es": "Características principales",
@@ -16,6 +18,8 @@
         "title": {
           "en-us": "Image & video capture*",
           "en": "Image & video capture*",
+          "en-au": "Image & video capture*",
+          "en-nz": "Image & video capture*",
           "fr": "Capture d’image et de vidéo*",
           "fr-ca": "Capture d’images et de vidéos*",
           "es": "Captura de imágenes y vídeo*",
@@ -26,6 +30,8 @@
         "description": {
           "en-us": "Capture every moment hands-free.",
           "en": "Capture every moment hands-free.",
+          "en-au": "Capture every moment hands-free.",
+          "en-nz": "Capture every moment hands-free.",
           "fr": "Capturez chaque instant en mode mains libres.",
           "fr-ca": "Capturez chaque moment en mode mains libres.",
           "es": "Captura cada momento sin usar las manos.",
@@ -36,6 +42,8 @@
         "disclaimer": {
           "en-us": "*Not available on Ray-Ban Audio.",
           "en": "*Not available on Ray-Ban Audio.",
+          "en-au": "*Not available on Ray-Ban Meta Audio.",
+          "en-nz": "*Not available on Ray-Ban Meta Audio.",
           "fr": "*Non disponible sur Ray-Ban Audio.",
           "fr-ca": "* Non disponible sur Ray-Ban Audio.",
           "es": "*No disponible en Ray-Ban Audio.",
@@ -50,6 +58,8 @@
         "title": {
           "en-us": "Open-ear audio",
           "en": "Open-ear audio",
+          "en-au": "Open-ear audio",
+          "en-nz": "Open-ear audio",
           "fr": "Audio à oreille ouverte",
           "fr-ca": "Audio à oreille ouverte",
           "es": "Audio de oído abierto",
@@ -60,6 +70,8 @@
         "description": {
           "en-us": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
           "en": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "en-au": "Experience quality audio while keeping conversations and ambient sounds within earshot.",
+          "en-nz": "Experience quality audio while keeping conversations and ambient sounds within earshot.",
           "fr": "Profitez d’un son haut de gamme tout en restant à l’écoute des conversations et des sons environnants.",
           "fr-ca": "Profitez d’un son de qualité supérieure tout en restant à l’écoute des conversations et des sons ambiants.",
           "es": "Disfruta de un audio de alta calidad mientras sigues escuchando las conversaciones y los sonidos ambientales a tu alrededor.",
@@ -74,6 +86,8 @@
         "title": {
           "en-us": "Touch control",
           "en": "Touch control",
+          "en-au": "Touch control",
+          "en-nz": "Touch control",
           "fr": "Commande tactile",
           "fr-ca": "Commande tactile",
           "es": "Control táctil",
@@ -84,6 +98,8 @@
         "description": {
           "en-us": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
           "en": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "en-au": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "en-nz": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
           "fr": "Contrôlez la musique, prenez des photos et passez des appels en toute fluidité grâce à des commandes tactiles réactives.",
           "fr-ca": "Contrôlez la musique, prenez des photos et passez des appels facilement grâce aux commandes tactiles réactives.",
           "es": "Controla la música sin esfuerzo, haz fotos y realiza llamadas con controles táctiles sensibles.",
@@ -98,6 +114,8 @@
         "title": {
           "en-us": "Meta AI",
           "en": "Meta AI",
+          "en-au": "Meta AI",
+          "en-nz": "Meta AI",
           "fr": "Meta AI",
           "fr-ca": "Meta AI",
           "es": "Meta AI",
@@ -108,6 +126,8 @@
         "description": {
           "en-us": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
           "en": "Get answers about what you see, personalised suggestions, and helpful reminders on the go.",
+          "en-au": "Get answers about what you see, personalised suggestions, and helpful reminders on the go.",
+          "en-nz": "Get answers about what you see, personalised suggestions, and helpful reminders on the go.",
           "fr": "Obtenez des réponses sur ce que vous voyez, des suggestions personnalisées et des rappels utiles en déplacement.",
           "fr-ca": "Obtenez des réponses sur ce que vous voyez, des suggestions personnalisées et des rappels utiles en déplacement.",
           "es": "Obtén respuestas sobre lo que ves, sugerencias personalizadas y recordatorios útiles sobre la marcha.",
