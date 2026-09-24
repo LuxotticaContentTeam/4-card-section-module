@@ -108,7 +108,7 @@ Sass compiles happily. The scaffolding templates already include it.
 There is no project-wide locale list. **Locales are per brand**, and each brand's
 are read from its own `src/json/variants/<BRAND>/json.json` — every translatable
 string there is an object keyed by locale, so the keys are the list
-(`tasks/prompt.task.js` > `localesForVariant`). SGH ships eight today; a brand
+(`tasks/prompt.task.js` > `localesForVariant`). SGH ships ten today; a brand
 that needs twelve just has twelve keys in its json, and nothing else changes.
 
 That is also why the dev prompt asks for the **variant first**: the language
@@ -170,7 +170,7 @@ does not jump when the stylesheet lands.
 files will be reachable at, trailing slash included:
 
 ```json
-"productionAsset": "https://media.sunglasshut.com/4CardSection/"
+"productionAsset": "https://media.sunglasshut.com/four-card-section-module/"
 ```
 
 Every runtime url — stylesheet, json, script — is derived from this one value,
@@ -271,6 +271,14 @@ SGH reads the **`lang` attribute on the `<html>` tag** and nothing else:
 | `<html lang>` | `en-US` | `en-CA` | `fr-CA` |
 | -> `info_store.lang` | `en` | `en` | `fr` |
 | -> `info_store.country` | `en-us` | `en-ca` | `fr-ca` |
+
+The same rule covers `/au` and `/nz`, which the copy now has `en-au` and `en-nz`
+keys for: `en-AU` -> `en-au`, `en-NZ` -> `en-nz`. ⚠️ Those two markets are
+**not verified on the live site yet** — check `<html lang>` there the same way
+before relying on them. If the attribute turns out to be missing, the module
+still renders, in the `en-us` copy, with a console warning; the visible
+difference is the disclaimer, which says "Ray-Ban Meta Audio" in `en-au`/`en-nz`
+and "Ray-Ban Audio" in `en-us`.
 
 It is **server-rendered** — already in the markup before any script runs — so
 the module resolves its locale on the first tick and renders immediately.
@@ -383,15 +391,19 @@ Scaling the type with the card — `clamp()`, or container units — would let t
 titles realign and keep the gap constant. Nothing does that today.
 
 Card images are 668x1200, twice the desktop card and the same aspect ratio, so
-`cover` crops essentially nothing at the design width.
+`cover` crops essentially nothing at the design width. The one exception is
+`RBM_LP_DESKTOP_FEATURES_AUDIO.jpg` (card two), which is 640x1200: still 2x, but
+slightly narrower, so `cover` trims about 4% off its top and bottom.
 
 ## Open items
 
-- **Asset base url** — `productionAsset` in `package.json` is still
-  `TODO_ASSET_BASE_URL/`. Until it holds the real value, `fragment.html` points
-  its `<script src>` at a placeholder and cannot go live. Same for
-  `productionImage` (`TODO_AKAMAI_IMAGE_PATH/`) and the `[PATH]` / `[VERSION]`
-  placeholders in `src/views/main/<BRAND>/live/live.html`.
+- **`productionImage` is still a placeholder** (`TODO_AKAMAI_IMAGE_PATH/`).
+  It blocks nothing today — every SGH `image` is an absolute url, and absolute
+  urls skip the prefix — but it comes back into play the moment an image is
+  given as a relative path. `productionAsset` is set
+  (`https://media.sunglasshut.com/four-card-section-module/`). The `[PATH]` /
+  `[VERSION]` placeholders in `src/views/main/<BRAND>/live/live.html` are still
+  there; that file only feeds the release preview, not the fragment.
 - **`productionConf` is dead config** — declared in `package.json` and replaced
   into the bundle as `@confPath@`, but no source file uses that token. The json
   url is built from `productionAsset` instead.
@@ -408,8 +420,10 @@ Card images are 668x1200, twice the desktop card and the same aspect ratio, so
   from the `workflow_dispatch` input. Fanning out to every variant at once needs
   the Akamai destination layout per brand confirmed first; see the note above the
   deploy step in `.github/workflows/deploy-*.yml`.
-- **Localisation** — `src/json/variants/SGH/json.json` carries eight locale keys
-  (`en-us`, `en`, `fr`, `fr-ca`, `es`, `es-mx`, `de`, `nl`). Translation is in
+- **Localisation** — `src/json/variants/SGH/json.json` carries ten locale keys
+  (`en-us`, `en`, `en-au`, `en-nz`, `fr`, `fr-ca`, `es`, `es-mx`, `de`, `nl`).
+  `en-au` and `en-nz` are not copies of `en`: the disclaimer names "Ray-Ban Meta
+  Audio" and card two says "quality audio" instead of "premium audio". Translation is in
   progress and tracked outside this repo; the file itself records no status.
   What matters when adding a locale: **never leave a key as an empty string.**
   `getTrad()` matches the country key before it falls back, so an empty `fr-ca`

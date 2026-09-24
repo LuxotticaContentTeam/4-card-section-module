@@ -18,7 +18,10 @@
   project-wide list it held, and the dev prompt asks for the variant before the
   language, since the language list now depends on it. `LANGUAGE=pt` fails on
   SGH and passes on PO.
-- SGH copy carries eight locale keys: `pt` and `pt-br` dropped, `nl` added.
+- SGH copy carries ten locale keys: `pt` and `pt-br` dropped, `nl`, `en-au`
+  and `en-nz` added. The two new English markets read "Ray-Ban Meta Audio" in
+  the disclaimer and "quality audio" on card two; the `<html lang>` values
+  they rely on (`en-AU`, `en-NZ`) are not verified on the live site yet.
 - The `_meta` block is gone from SGH's content json and from the scaffold
   template. Nothing read it, and it shipped to the browser with the copy.
 - **Fix** — cards hold their 334x600 (320x600 mobile) aspect ratio at every

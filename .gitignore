@@ -28,3 +28,6 @@ release
 # translation files
 .smartling*
 translated/
+
+# between-sessions handoff, not project documentation
+HANDOFF.md
