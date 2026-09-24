@@ -1,0 +1,138 @@
+{
+  "_meta": {
+    "note": "PLACEHOLDER CONTENT for RB — copied from SGH. Copy, images and translations are still the SGH ones; replace them before the variant ships. Every string is an object keyed by locale, resolved at runtime by getTrad() (src/js/modules/utils.js), which falls back country -> language -> prefix -> en-us -> en. \"image\" is a path relative to the environment image path (package.json > projectConfigurations.paths), prefixed by contents.js — those files must exist under src/static/images/RB/.",
+    "locales": ["en-us", "en", "fr", "fr-ca", "es", "es-mx", "de", "pt", "pt-br"],
+    "translated": [],
+    "pending_translation": ["en-us", "en", "fr", "fr-ca", "es", "es-mx", "de", "pt", "pt-br"]
+  },
+  "main_features": {
+    "title": {
+      "en-us": "Main features",
+      "en": "Main features",
+      "fr": "Main features",
+      "fr-ca": "Main features",
+      "es": "Main features",
+      "es-mx": "Main features",
+      "de": "Main features",
+      "pt": "Main features",
+      "pt-br": "Main features"
+    },
+    "cards": [
+      {
+        "id": "image-video-capture",
+        "title": {
+          "en-us": "Image & video capture*",
+          "en": "Image & video capture*",
+          "fr": "Image & video capture*",
+          "fr-ca": "Image & video capture*",
+          "es": "Image & video capture*",
+          "es-mx": "Image & video capture*",
+          "de": "Image & video capture*",
+          "pt": "Image & video capture*",
+          "pt-br": "Image & video capture*"
+        },
+        "description": {
+          "en-us": "Capture every moment hands-free.",
+          "en": "Capture every moment hands-free.",
+          "fr": "Capture every moment hands-free.",
+          "fr-ca": "Capture every moment hands-free.",
+          "es": "Capture every moment hands-free.",
+          "es-mx": "Capture every moment hands-free.",
+          "de": "Capture every moment hands-free.",
+          "pt": "Capture every moment hands-free.",
+          "pt-br": "Capture every moment hands-free."
+        },
+        "disclaimer": {
+          "en-us": "*Not available on Ray-Ban Audio.",
+          "en": "*Not available on Ray-Ban Audio.",
+          "fr": "*Not available on Ray-Ban Audio.",
+          "fr-ca": "*Not available on Ray-Ban Audio.",
+          "es": "*Not available on Ray-Ban Audio.",
+          "es-mx": "*Not available on Ray-Ban Audio.",
+          "de": "*Not available on Ray-Ban Audio.",
+          "pt": "*Not available on Ray-Ban Audio.",
+          "pt-br": "*Not available on Ray-Ban Audio."
+        },
+        "image": "RB/feature-01-capture.jpg"
+      },
+      {
+        "id": "open-ear-audio",
+        "title": {
+          "en-us": "Open-ear audio",
+          "en": "Open-ear audio",
+          "fr": "Open-ear audio",
+          "fr-ca": "Open-ear audio",
+          "es": "Open-ear audio",
+          "es-mx": "Open-ear audio",
+          "de": "Open-ear audio",
+          "pt": "Open-ear audio",
+          "pt-br": "Open-ear audio"
+        },
+        "description": {
+          "en-us": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "en": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "fr": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "fr-ca": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "es": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "es-mx": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "de": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "pt": "Experience premium audio while keeping conversations and ambient sounds within earshot.",
+          "pt-br": "Experience premium audio while keeping conversations and ambient sounds within earshot."
+        },
+        "image": "RB/feature-02-audio.jpg"
+      },
+      {
+        "id": "touch-control",
+        "title": {
+          "en-us": "Touch control",
+          "en": "Touch control",
+          "fr": "Touch control",
+          "fr-ca": "Touch control",
+          "es": "Touch control",
+          "es-mx": "Touch control",
+          "de": "Touch control",
+          "pt": "Touch control",
+          "pt-br": "Touch control"
+        },
+        "description": {
+          "en-us": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "en": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "fr": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "fr-ca": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "es": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "es-mx": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "de": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "pt": "Seamlessly control music, take photos, and make calls with responsive touch controls.",
+          "pt-br": "Seamlessly control music, take photos, and make calls with responsive touch controls."
+        },
+        "image": "RB/feature-03-touch.jpg"
+      },
+      {
+        "id": "meta-ai",
+        "title": {
+          "en-us": "Meta AI",
+          "en": "Meta AI",
+          "fr": "Meta AI",
+          "fr-ca": "Meta AI",
+          "es": "Meta AI",
+          "es-mx": "Meta AI",
+          "de": "Meta AI",
+          "pt": "Meta AI",
+          "pt-br": "Meta AI"
+        },
+        "description": {
+          "en-us": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "en": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "fr": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "fr-ca": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "es": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "es-mx": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "de": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "pt": "Get answers about what you see, personalized suggestions, and helpful reminders on the go.",
+          "pt-br": "Get answers about what you see, personalized suggestions, and helpful reminders on the go."
+        },
+        "image": "RB/feature-04-meta-ai.jpg"
+      }
+    ]
+  }
+}

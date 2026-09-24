@@ -1,0 +1,33 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# vscode
+.editorconfig
+.vscode
+
+# Logs
+*.log
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# npm
+node_modules
+
+# temporary build files
+.tmp
+src/scss/.tmp
+
+# build folder
+dist
+release
+
+# translation files
+.smartling*
+translated/
+
+# between-sessions handoff, not project documentation
+HANDOFF.md

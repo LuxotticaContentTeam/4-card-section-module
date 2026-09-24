@@ -1,0 +1,29 @@
+//- Module container. `bannerName` is derived from projectConfig.json -> projectName.
+//-
+//- The four-card skeleton lives HERE and not in the variant folder: the markup is
+//- identical for every brand, and this is the file the boilerplate designates for
+//- "HTML shared between variants". Unlike the variant views this one also receives
+//- pug locals, which is why `crossoriginAttr` can be set on the images directly.
+//-
+//- The skeleton is static: every text node and image source is filled at runtime by
+//- src/js/contents.js, reading src/json/variants/<VARIANT>/json.json.
+//- Figma: desktop node 410:8852, mobile node 410:10431.
+
+- var CARDS = [0, 1, 2, 3]
+
+div( id="ct_cm--" + bannerName  data-ct-module=bannerName )
+	section.ct_main-features#ct_main-features
+		h2.ct_main-features__title
+
+		.ct_main-features__track(role="list")
+			each index in CARDS
+				article.ct_main-features__card(role="listitem" data-card-index=index)
+					img.ct_main-features__card-image(alt="" loading="lazy" decoding="async" crossorigin=crossoriginAttr)
+					.ct_main-features__card-text
+						h3.ct_main-features__card-title
+						.ct_main-features__card-body
+							p.ct_main-features__card-description
+							span.ct_main-features__card-disclaimer(hidden)
+
+	//- Brand-specific HTML, when a variant needs any: src/views/main/<VARIANT>/main.pug
+	!= brandHtml

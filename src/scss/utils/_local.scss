@@ -1,0 +1,33 @@
+// Styles that exist ONLY in the local dev environment.
+// In production the module is injected into the live page, which already
+// provides the fonts and the page-level resets.
+@if ($env == "development") {
+  body {
+    margin: 0;
+  }
+
+  @if ($brand == "SGH") {
+    @font-face {
+      font-family: "Acta Headline";
+      src: url(../static/fonts/SGH/ActaHeadlineLight_normal_normal.woff2) format("woff");
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Acta Headline";
+      src: url(../static/fonts/SGH/ActaHeadlineBook_normal_normal.woff2) format("woff");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Acta Headline";
+      src: url(../static/fonts/SGH/ActaHeadlineBold_normal_normal.woff2) format("woff");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    * {
+      font-family: "Helvetica Neue", sans-serif;
+    }
+  }
+}

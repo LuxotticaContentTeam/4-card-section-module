@@ -1,0 +1,103 @@
+// ---------------------------------------------------------------------------
+// Critical css — the only style that travels inside the CoreMedia fragment.
+//
+// It holds geometry, nothing else: enough for the empty skeleton to occupy the
+// exact space the filled component will, so the page does not jump when the
+// real stylesheet arrives from the asset host (injected by
+// src/js/modules/bootstrap.js).
+//
+// Two constraints shape this file:
+//
+//  1. It is compiled on its own (tasks/style.task.js), NOT concatenated with
+//     the variant, so the brand tokens in scss/variants/<BRAND>/_variables.scss
+//     are out of reach. The values below are literals that mirror them — they
+//     are the shared design measurements (Figma 410:8852 / 410:10431), the same
+//     for every brand. Change one there, change it here.
+//  2. It must leave the component visible on its own. The reveal rule is
+//     duplicated from _main-features.scss so that a slow or failed stylesheet
+//     degrades to "unstyled but readable" instead of "blank".
+// ---------------------------------------------------------------------------
+@import "./utils/variables";
+
+#{$bannerName} {
+  width: 100%;
+  position: relative;
+
+  .ct_main-features {
+    box-sizing: border-box;
+    margin-inline: auto;
+    padding: 0 40px 40px; // $spacing-xl
+
+    @media (max-width: $tab-max) {
+      padding: 0 0 40px;
+    }
+  }
+
+  .ct_main-features__title {
+    margin: 0 0 24px; // $spacing-md
+
+    @media (max-width: $tab-max) {
+      margin-inline: 16px; // $section-padding-inline-mob
+    }
+  }
+
+  .ct_main-features__track {
+    display: flex;
+    align-items: center;
+    gap: 8px; // $spacing-xs
+    overflow-y: hidden;
+
+    @media (max-width: $tab-max) {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-inline: 16px;
+      scroll-padding-left: 16px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .ct_main-features__card {
+    position: relative;
+    box-sizing: border-box;
+    flex: 1 1 0;
+    // Ratio, never a fixed height: an explicit height would win over the ratio
+    // in the full stylesheet too, and this block is inlined in the fragment, so
+    // a stale copy of it in CoreMedia silently overrides the uploaded css.
+    aspect-ratio: 334 / 600; // $card-width-desk / $card-height
+    border: 1px solid transparent; // colour is a brand token, geometry is not
+    border-radius: 2px; // $border-radius
+    overflow: hidden;
+
+    // Entry state — contents.js adds .is-visible on first viewport entry.
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    @media (max-width: $tab-max) {
+      flex: 0 0 320px; // $card-width-carousel
+      aspect-ratio: 320 / 600;
+      scroll-snap-align: start;
+    }
+  }
+
+  .ct_main-features.is-visible .ct_main-features__card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ct_main-features__card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
